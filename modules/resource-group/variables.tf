@@ -1,3 +1,3 @@
-variable "rgs"{
-    type = map(any)
+variable "rgs" {
+  type = map(any)
 }

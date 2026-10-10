@@ -1,4 +1,4 @@
-name: Terraform CI
+name: Terraform Dev CI
 
 on:
   push:
@@ -13,15 +13,19 @@ permissions:
 
 jobs:
   terraform:
-    name: Terraform Validate
+    name: Validate Dev
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: environments/dev
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
 
       - name: Check formatting
         run: terraform fmt -check -recursive
